@@ -25,8 +25,8 @@ public class TemperatureConversionApp2 {
 		final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 		final Temperature2Controller controller = new Temperature2Controller();
 
-		System.out.print("> ");
 		while (true) {
+			System.out.print("> ");
 			final String consoleLine = consoleReader.readLine().trim();
 			final int delimiterPosition = consoleLine.indexOf(' ');
 			final String command = (delimiterPosition == -1 ? consoleLine : consoleLine.substring(0, delimiterPosition)).trim().toLowerCase();
@@ -50,7 +50,6 @@ public class TemperatureConversionApp2 {
 				System.err.println(e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage());
 			}
 
-			System.out.print("> ");
 		}
 	}
 }
