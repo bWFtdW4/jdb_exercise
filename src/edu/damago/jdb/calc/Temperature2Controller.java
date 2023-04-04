@@ -25,8 +25,8 @@ public class Temperature2Controller {
 		System.out.println("Available commands:");
 		System.out.println("- quit: terminates this program");
 		System.out.println("- help: displays this help");
-		System.out.println("- use convert or cc <temperature> <symbol> to convert temperature in all varity");
-		System.out.println("- use convert or cc <temperature> <symbol> <symbol> to convert to a specifec temperature");
+		System.out.println("- use [convert] or [cc] <temperature> <symbol> to convert temperature in all variety");
+		System.out.println("- use [convert] or [cc] <temperature> <symbol> <symbol> to convert to a specifec temperature");
 	}
 
 
