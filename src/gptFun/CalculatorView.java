@@ -1,5 +1,6 @@
 package gptFun;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,7 +22,8 @@ public class CalculatorView extends JFrame {
 	CalculatorView () {
 		JPanel calcPanel = new JPanel();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(600, 200);
+		this.setSize(400, 200);
+		calcPanel.setBackground(Color.blue);
 		calcPanel.add(firstNumber);
 		calcPanel.add(operator);
 		calcPanel.add(secondNumber);
