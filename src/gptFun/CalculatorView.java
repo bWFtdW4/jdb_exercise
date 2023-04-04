@@ -11,7 +11,8 @@ import javax.swing.JTextField;
 
 public class CalculatorView extends JFrame {
 	private JTextField firstNumber = new JTextField(10);
-	private JLabel additionLabel = new JLabel("+");
+	//private JLabel additionLabel = new JLabel("+");
+	private JTextField operator = new JTextField(10);
 	private JTextField secondNumber = new JTextField(10);
 	private JButton calculateButton = new JButton("Calculate");
 	private JTextField calcSolution = new JTextField(10);
@@ -22,7 +23,7 @@ public class CalculatorView extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600, 200);
 		calcPanel.add(firstNumber);
-		calcPanel.add(additionLabel);
+		calcPanel.add(operator);
 		calcPanel.add(secondNumber);
 		calcPanel.add(calculateButton);
 		calcPanel.add(calcSolution);
@@ -39,6 +40,9 @@ public class CalculatorView extends JFrame {
 		return Integer.parseInt(secondNumber.getText());
 	}
 
+	public String getOperator () {
+		return operator.getText();
+	}
 
 	public int getCalcSolution () {
 		return Integer.parseInt(calcSolution.getText());

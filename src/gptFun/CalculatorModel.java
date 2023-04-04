@@ -4,23 +4,23 @@ public class CalculatorModel {
 	private int calculationValue;
 
 
-	public void add (int number) {
-		calculationValue += number; 
+	public void add (int firstNumber, int secondNumber) {
+		calculationValue = firstNumber + secondNumber; 
 	}
 
 
-	public void subtract (int number) {
-		calculationValue -= number;
+	public void subtract (int firstNumber, int secondNumber) {
+		calculationValue = firstNumber - secondNumber;
 	}
 
 
-	public void multiply (int number) {
-		calculationValue *= number;
+	public void multiply (int firstNumber, int secondNumber) {
+		calculationValue = firstNumber * secondNumber;
 	}
 
 
-	public void divide (int number) {
-		calculationValue /= number;
+	public void divide (int firstNumber, int secondNumber) {
+		calculationValue = firstNumber / secondNumber;
 	}
 
 

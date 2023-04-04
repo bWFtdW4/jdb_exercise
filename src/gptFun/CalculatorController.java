@@ -22,21 +22,21 @@ public class CalculatorController {
 			try {
 				firstNumber = view.getFirstNumber();
 				secondNumber = view.getSecondNumber();
-				switch (e.getActionCommand()) {
+				switch (view.getOperator()) {
 					case "+":
-						model.add(secondNumber);
+						model.add(firstNumber, secondNumber);
 						break;
 					case "-":
-						model.subtract(secondNumber);
+						model.subtract(firstNumber, secondNumber);
 						break;
 					case "*":
-						model.multiply(secondNumber);
+						model.multiply(firstNumber, secondNumber);
 						break;
 					case "/":
-						model.divide(secondNumber);
+						model.divide(firstNumber, secondNumber);
 						break;
 					default:
-						model.add(secondNumber);
+						model.add(firstNumber, secondNumber);
 				}
 				view.setCalcSolution(model.getCalculationValue());
 			} catch (NumberFormatException ex) {

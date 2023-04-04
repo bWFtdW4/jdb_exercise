@@ -10,6 +10,7 @@ public class CalculatorMain {
 		CalculatorController myController = new CalculatorController(view, model);
 		//view.addCalculateListener(new CalculateListener());
 		view.addCalculateListener(null);
+		
 		// Start event loop
 
 		view.setVisible(true);
