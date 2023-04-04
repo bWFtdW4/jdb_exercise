@@ -1,7 +1,7 @@
 package edu.damago.jdb.calc;
 
 /**
- * Instances of this class represent arithmetic binary operators.
+ * Instances of this class converts temperature to 'K', 'C', 'F'
  */
 
 public class TemperatureConverter2 {

@@ -1,7 +1,7 @@
 package edu.damago.jdb.calc;
 
 /**
- * Facade for the calculator application, version 2.
+ * Facade for the temperature converter application, version 2.
  */
 public class Temperature2Controller {
 

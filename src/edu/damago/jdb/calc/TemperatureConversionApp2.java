@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 
 /**
- * Facade for the calculator application, version 2.
+ * Facade for the temperature converter application, version 2.
  */
 
 public class TemperatureConversionApp2 {
