@@ -23,7 +23,9 @@ public class Calculator2App {
 	static public void main (final String[] args) throws IOException {
 		final Calculator2Controller controller = new Calculator2Controller();
 		final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
-
+		
+		MenuController mainController = new MenuController();
+		
 		controller.performWelcome();
 		while (true) {
 			System.out.print("> ");
@@ -38,8 +40,7 @@ public class Calculator2App {
 					default:
 						controller.performHelpCommand(parameterization);
 						break;
-					case "quit":
-					case "exit":
+					case "quit": case "exit":
 						controller.performQuitCommand(parameterization);
 						break;
 					case "calc":
