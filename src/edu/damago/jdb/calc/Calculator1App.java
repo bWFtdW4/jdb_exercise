@@ -3,7 +3,7 @@ package edu.damago.jdb.calc;
 /**
  * @author Mamun
  */
-public class CalculatorlApp1 {
+public class Calculator1App {
 	/**
 	 * Application entry point.
 	 * @param args the runtime arguments
