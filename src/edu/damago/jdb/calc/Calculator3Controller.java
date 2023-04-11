@@ -77,5 +77,4 @@ public class Calculator3Controller {
 		// output - ausgabe
 		System.out.println(leftOperand + " " + operator.getSymbol() + " " + rightOperand + " = " + result);
 	}
-
 }
