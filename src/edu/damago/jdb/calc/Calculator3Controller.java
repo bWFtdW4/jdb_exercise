@@ -9,6 +9,16 @@ public class Calculator3Controller {
 		//new class for Operator, extends BinaryOperator3
 	}
 
+
+	/**
+	 * Performs the welcome command.
+	 */
+	public void performWelcome () {
+		System.out.println("Welcome to the calculator v3 !");
+		System.out.println("Use [help] for operators and information.");
+	}
+
+
 	/**
 	 * Performs the quit command.
 	 * @param parameterization the command parameterization, empty for none
@@ -67,14 +77,5 @@ public class Calculator3Controller {
 		// output - ausgabe
 		System.out.println(leftOperand + " " + operator.getSymbol() + " " + rightOperand + " = " + result);
 	}
-	
-	/**
-	 * Performs the quit command.
-	 * @param parameterization the command parameterization, empty for none
-	 * @throws NullPointerException if the given parameterization is null
-	 */
-	public void performWelcome () {
-		System.out.println("Welcome to the calculator v3 !");
-		System.out.println("Use [help] for operators and information.");		
-	}
+
 }

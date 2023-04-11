@@ -1,12 +1,20 @@
 package edu.damago.jdb.calc;
 
+import java.util.HashMap;
+import java.util.Map;
 import edu.damago.jdb.tool.ExtendedMath;
+
 
 /**
  * Instances of this class represent arithmetic binary operators.
  */
+@FunctionalInterface
+public interface BinaryOperator4 {
+	static public final Map<String,BinaryOperator4> POOL = new HashMap<>();
 
-public abstract class BinaryOperator3 extends Object {
+
+
+	public abstract class BinaryOperator3 extends Object {
 	static public BinaryOperator3[] POOL = { 
 		new SumOperator("//"),
 		new DifferenceOperator("-"),
