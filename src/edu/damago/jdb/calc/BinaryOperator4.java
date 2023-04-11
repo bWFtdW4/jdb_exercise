@@ -12,6 +12,7 @@ import edu.damago.jdb.tool.ExtendedMath;
 public interface BinaryOperator4 {
 	static public final Map<String,BinaryOperator4> POOL = new HashMap<>();
 
+
 	/**
 	 * Calculates the result of applying this operator to the given operands, and returns it.
 	 * @param leftOperand the left operand
@@ -20,7 +21,7 @@ public interface BinaryOperator4 {
 	 */
 	double calculate (final double leftOperand, final double rightOperand);
 
-	
+
 	/**
 	 * Initializes the instance POOL.
 	 */
@@ -36,12 +37,12 @@ public interface BinaryOperator4 {
 	}
 
 
-
 	static public class SumOperator implements BinaryOperator4 {
 		public double calculate (final double leftOperand, final double rightOperand) {
 			return leftOperand + rightOperand;
 		}
 	}
+
 
 
 	static public class DifferenceOperator implements BinaryOperator4 {
@@ -51,11 +52,13 @@ public interface BinaryOperator4 {
 	}
 
 
+
 	static public class ProductOperator implements BinaryOperator4 {
 		public double calculate (final double leftOperand, final double rightOperand) {
 			return leftOperand * rightOperand;
 		}
 	}
+
 
 
 	static public class QuotientOperator implements BinaryOperator4 {
@@ -65,6 +68,7 @@ public interface BinaryOperator4 {
 	}
 
 
+
 	static public class ModuloOperator implements BinaryOperator4 {
 		public double calculate (final double leftOperand, final double rightOperand) {
 			return leftOperand % rightOperand;
@@ -72,12 +76,15 @@ public interface BinaryOperator4 {
 	}
 
 
+
 	static public class ExponentOperator implements BinaryOperator4 {
 		public double calculate (final double leftOperand, final double rightOperand) {
 			return Math.pow(leftOperand, rightOperand);
 		}
 	}
-	
+
+
+
 	static class RootOperator implements BinaryOperator4 {
 		public double calculate (final double leftOperand, final double rightOperand) {
 			return ExtendedMath.root(leftOperand, rightOperand);
