@@ -49,11 +49,12 @@ public class Temperature2Controller {
 			}
 
 			final char sourceUnit = Character.toUpperCase(parts[1].charAt(0));
-			//System.out.println("debug:55555 " + sourceUnit);
 			if (temperature < 0 && sourceUnit == 'K') throw new IllegalArgumentException("nothing can be colder than absolute zero at 0°K!");
 			if (temperature < -273.15 && sourceUnit == 'C') throw new IllegalArgumentException("nothing can be colder than absolute zero at -273.15°C!");
 			if (temperature < -459.67 && sourceUnit == 'F') throw new IllegalArgumentException("nothing can be colder than absolute zero at -459.67°F!");
-
+			
+			
+			// output - ausgabe
 			if (parts.length == 3) {
 				final char targetUnit = Character.toUpperCase(parts[2].charAt(0));
 				final TemperatureConverter2 converter = new TemperatureConverter2(sourceUnit, targetUnit);

@@ -1,7 +1,7 @@
 package edu.damago.jdb.calc;
 
 /**
- * Controller for the calculator application, version 2.
+ * Controller for the calculator application, version 4.
  */
 public class Calculator4Controller {
 

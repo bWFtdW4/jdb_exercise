@@ -18,9 +18,7 @@ public class TemperatureConverter2 {
 	 */
 	public TemperatureConverter2 (final char sourceUnit, final char targetUnit) {
 		this.sourceUnit = sourceUnit;
-		//System.out.println("debug:33333 "+sourceUnit);
 		this.targetUnit = targetUnit;
-		//System.out.println("debug:4444 "+targetUnit);
 	}
 
 
@@ -49,7 +47,6 @@ public class TemperatureConverter2 {
 	 * @throws IllegalStateException if the source or target unit is illegal
 	 */
 	public double convert (final double temperature) throws IllegalStateException {
-		//System.out.println("debug:22222 " + sourceUnit + targetUnit);		
 		switch (this.sourceUnit + "" + this.targetUnit) {
 			default:
 				throw new IllegalStateException("Illegal source and/or target unit!");
