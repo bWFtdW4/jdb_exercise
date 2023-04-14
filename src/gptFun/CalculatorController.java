@@ -22,25 +22,25 @@ public class CalculatorController {
 			try {
 				firstNumber = view.getFirstNumber();
 				secondNumber = view.getSecondNumber();
-				switch (view.getOperator()) {
-					case "+":
+				switch (view.operatorBox.getItemAt(view.operatorBox.getSelectedIndex())) {
+					case "Addition":
 						model.add(firstNumber, secondNumber);
 						break;
-					case "-":
+					case "Subtraction":
 						model.subtract(firstNumber, secondNumber);
 						break;
-					case "*":
+					case "Multiplication":
 						model.multiply(firstNumber, secondNumber);
 						break;
-					case "/":
+					case "Division":
 						model.divide(firstNumber, secondNumber);
 						break;
 					default:
-						model.add(firstNumber, secondNumber);
+						view.displayErrorMessage("TBC");
 				}
 				view.setCalcSolution(model.getCalculationValue());
 			} catch (NumberFormatException ex) {
-				view.displayErrorMessage("You Need to Enter 2 Integers");
+				view.displayErrorMessage("Please add both numbers!");
 			}
 		}
 	}

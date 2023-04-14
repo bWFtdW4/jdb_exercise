@@ -38,8 +38,8 @@ public class Temperature4Controller {
 	 */
 	public void performHelpCommand (final String parameterization) throws NullPointerException {
 		System.out.println("Available commands:");
-		System.out.println("- use [convert]	<temperature> <unit> <target unit> to convert to a specifec temperature");
-		System.out.println("- 	or	<temperature> <unit> to convert temperature in all variety");
+		System.out.println("- convert:	<temperature> <unit> <target unit> to convert to a specifec temperature (e.g. 30 C F)");
+		System.out.println("- convertall:	<temperature> <unit> to convert temperature in all variety (e.g. 30 C)");
 		System.out.println("- quit: terminates this program");
 		System.out.println("- help: displays this help");
 	}
