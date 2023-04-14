@@ -32,9 +32,9 @@ public interface TemperatureConverter4 {
 		POOL.put("CK", new convertC2K());
 		POOL.put("FK", new convertF2K());
 
+
 	}
-
-
+	
 	static public class convertK2F implements TemperatureConverter4 {
 		public double convert (final double temperature) {
 			return temperature * 1.8 - 459.67;

@@ -1,9 +1,5 @@
 package edu.damago.jdb.calc;
 
-import java.awt.RenderingHints.Key;
-import java.lang.annotation.Target;
-
-
 /**
  * Controller for the temperature converter application, version 4.
  */
@@ -42,8 +38,8 @@ public class Temperature4Controller {
 	 */
 	public void performHelpCommand (final String parameterization) throws NullPointerException {
 		System.out.println("Available commands:");
-		System.out.println("- use [convert] or [ct] <temperature> <symbol> <symbol> to convert to a specifec temperature");
-		System.out.println("- use [convertall] or [cta] <temperature> <symbol> to convert temperature in all variety");
+		System.out.println("- use [convert]	<temperature> <unit> <target unit> to convert to a specifec temperature");
+		System.out.println("- 	or	<temperature> <unit> to convert temperature in all variety");
 		System.out.println("- quit: terminates this program");
 		System.out.println("- help: displays this help");
 	}
@@ -65,9 +61,9 @@ public class Temperature4Controller {
 		} catch (final NumberFormatException e) {
 			temperatur = Double.NaN;
 		}
-		final char sourceUnit = arguments[1].charAt(0);
-		final char targetUnit = arguments[2].charAt(0);
-		final String convertUnit =  sourceUnit +""+ targetUnit;
+		final char sourceUnit = arguments[1].toUpperCase().charAt(0);
+		final char targetUnit = arguments[2].toUpperCase().charAt(0);
+
 		performConversionCommand(temperatur, sourceUnit, targetUnit);
 	}
 
@@ -81,8 +77,7 @@ public class Temperature4Controller {
 	public void performMultiConvertCommand (final String parameterization) throws NullPointerException {
 		double temperatur;
 		final String[] arguments = parameterization.split("\\s+");
-		System.out.println(arguments.length);
-		if (arguments.length != 2) throw new IllegalArgumentException("must pass exactly three arguments!");
+		if (arguments.length != 2) throw new IllegalArgumentException("must pass two arguments!");
 
 		try {
 			temperatur = Double.parseDouble(arguments[0]);
@@ -91,40 +86,28 @@ public class Temperature4Controller {
 		}
 		final char sourceUnit = arguments[1].toUpperCase().charAt(0);
 
+		final char[] UNITS = { 'K', 'C', 'F' };
+		for (final char targetUnit : UNITS) {	// for-each
+			if (sourceUnit != targetUnit) {
+				performConversionCommand(temperatur, sourceUnit, targetUnit);
+			}
+		}
 	}
 
 
 	/**
-	 * Performs a singel temperature conversion and displays the result.
+	 * Performs temperature conversion and displays the result.
 	 * @param temperature the temperature value
 	 * @param sourceUnit the source unit
 	 * @param targetUnit the target unit
 	 * @throws IllegalStateException if the source or target unit is illegal
 	 */
 	static protected void performConversionCommand (final double temperature, final char sourceUnit, final char targetUnit) throws IllegalStateException {
-		final String operator = (sourceUnit + "" + targetUnit).toUpperCase();
-		System.out.println("222: " + operator);
+		final String operator = (sourceUnit + "" + targetUnit);
 		final TemperatureConverter4 converter = TemperatureConverter4.POOL.get(operator);
 		final double result = converter.convert(temperature);
 
 		System.out.println("Result: " + temperature + "°" + sourceUnit + " = " + result + "°" + targetUnit);
 	}
-	
 
-	/**
-	 * Performs a singel temperature conversion and displays the result.
-	 * @param temperature the temperature value
-	 * @param sourceUnit the source unit
-	 * @param targetUnit the target unit
-	 * @throws IllegalStateException if the source or target unit is illegal
-	 */
-	static protected void performMultiConversionCommand (final double temperature, final String convertUnit) throws IllegalStateException {
-		final String operator = (convertUnit).toUpperCase();
-		System.out.println("222: " + operator);
-		final TemperatureConverter4 converter = TemperatureConverter4.POOL.get(operator);
-		final double result = converter.convert(temperature);
-
-		//System.out.println("Result: " + temperature + "°" + sourceUnit + " = " + result + "°" + targetUnit);
-	}
-	
 }

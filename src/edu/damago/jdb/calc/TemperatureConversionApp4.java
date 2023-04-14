@@ -28,8 +28,6 @@ public class TemperatureConversionApp4 {
 
 		controller.performWelcome();
 		
-		
-		
 		while (true) {
 			System.out.print("> ");
 			final String consoleLine = consoleReader.readLine().trim();
@@ -49,7 +47,11 @@ public class TemperatureConversionApp4 {
 						break;
 					case "convert":
 					case "ct":
-						controller.performSingelConvertCommand(parameterization);
+						System.out.println(parameterization.length());
+						if (parameterization.length() < 6)
+							controller.performMultiConvertCommand(parameterization);
+						else 
+							controller.performSingelConvertCommand(parameterization);
 						break;
 					case "convertall":
 					case "cta":
