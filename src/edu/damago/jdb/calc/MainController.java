@@ -1,10 +1,5 @@
 package edu.damago.jdb.calc;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-
 /**
  * Controller for the template application.
  */

@@ -13,10 +13,8 @@ public class MainCalculator {
 		final Temperature4Controller tempController = new Temperature4Controller();
 		final Statictics1Controller statController = new Statictics1Controller();
 
-		
 		final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
-		
 		mainController.performWelcome();
 
 		while (true) {

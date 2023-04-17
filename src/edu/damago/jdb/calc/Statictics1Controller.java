@@ -46,8 +46,7 @@ public class Statictics1Controller {
 
 
 	/**
-	 * performs the sum command
-	 * uses sumOf() method
+	 * performs the sum command uses sumOf() method
 	 * @param parameterization the command parameterization, empty for none
 	 * @throws NullPointerException if the given parameterization is null
 	 */
@@ -69,8 +68,7 @@ public class Statictics1Controller {
 
 
 	/**
-	 * performs the average command
-	 * uses sumOf() method
+	 * performs the average command uses sumOf() method
 	 * @param parameterization the command parameterization, empty for none
 	 * @throws NullPointerException if the given parameterization is null
 	 */
