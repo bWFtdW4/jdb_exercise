@@ -30,10 +30,14 @@ public class CalculatorView extends JFrame {
 		JPanel calcPanel = new JPanel();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(300, 300);
+		this.setTitle("Calulator");
+		this.setResizable(false);
+
+		
 		calcPanel.setLayout(null);
 		calcPanel.setVisible(true);
 		//calcPanel.setBackground(Color.blue);
-		calcPanel.add(operatorMenu);
+		//calcPanel.add(operatorMenu);
 		calcPanel.add(firstNumberLable);
 		calcPanel.add(firstNumber);
 		calcPanel.add(operatorLable);
@@ -44,9 +48,8 @@ public class CalculatorView extends JFrame {
 		calcPanel.add(calcSolutionLabel);
 		calcPanel.add(calcSolution);
 		calcPanel.add(operatorBox);
-		this.setResizable(false);
 		
-		this.setTitle("Calulator");
+		
 		
 		
 		
