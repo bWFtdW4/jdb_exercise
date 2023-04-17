@@ -56,13 +56,14 @@ public class Statictics1Controller {
 		final List<Double> values = new ArrayList<>();
 		for (final String argument : arguments) {
 			try {
-				if (!argument.isEmpty()) values.add(Double.parseDouble(argument));
+				if (!argument.isEmpty()) 
+					values.add(Double.parseDouble(argument));
 			} catch (final NumberFormatException e) {
 				values.add(Double.NaN);
 			}
 		}
 
-		double sum = sumOf(values);
+		final double sum = sumOf(values);
 		System.out.println("The sum of: " + values + " is: " + sum);
 	}
 
@@ -84,7 +85,7 @@ public class Statictics1Controller {
 			}
 		}
 
-		double average = sumOf(values) / values.size();
+		final double average = sumOf(values) / values.size();
 		System.out.println("The average of: " + values + " is: " + average);
 	}
 

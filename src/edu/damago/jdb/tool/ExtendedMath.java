@@ -1,5 +1,7 @@
 package edu.damago.jdb.tool;
 
+import java.util.Collection;
+
 
 /**
  * Facade for extended math operations.
@@ -167,7 +169,7 @@ public class ExtendedMath {
 	/**
 	 * Rounds the given value to the given number of decimal digits.
 	 * @param value the value
-	 * @param digitCount the number of decimal digits 
+	 * @param digitCount the number of decimal digits
 	 * @return the rounded value
 	 * @throws IllegalArgumentException if the given digit count is strictly negative
 	 */
@@ -183,7 +185,7 @@ public class ExtendedMath {
 	/**
 	 * Rounds the given value to the given number of decimal digits.
 	 * @param value the value
-	 * @param digitCount the number of decimal digits 
+	 * @param digitCount the number of decimal digits
 	 * @return the rounded value
 	 * @throws IllegalArgumentException if the given digit count is strictly negative
 	 */
@@ -199,7 +201,7 @@ public class ExtendedMath {
 	/**
 	 * Rounds the given value down to the given number of decimal digits.
 	 * @param value the value
-	 * @param digitCount the number of decimal digits 
+	 * @param digitCount the number of decimal digits
 	 * @return the floored value
 	 * @throws IllegalArgumentException if the given digit count is strictly negative
 	 */
@@ -215,7 +217,7 @@ public class ExtendedMath {
 	/**
 	 * Rounds the given value down to the given number of decimal digits.
 	 * @param value the value
-	 * @param digitCount the number of decimal digits 
+	 * @param digitCount the number of decimal digits
 	 * @return the floored value
 	 * @throws IllegalArgumentException if the given digit count is strictly negative
 	 */
@@ -231,7 +233,7 @@ public class ExtendedMath {
 	/**
 	 * Rounds the given value up to the given number of decimal digits.
 	 * @param value the value
-	 * @param digitCount the number of decimal digits 
+	 * @param digitCount the number of decimal digits
 	 * @return the ceilinged value
 	 * @throws IllegalArgumentException if the given digit count is strictly negative
 	 */
@@ -247,7 +249,7 @@ public class ExtendedMath {
 	/**
 	 * Rounds the given value up to the given number of decimal digits.
 	 * @param value the value
-	 * @param digitCount the number of decimal digits 
+	 * @param digitCount the number of decimal digits
 	 * @return the ceilinged value
 	 * @throws IllegalArgumentException if the given digit count is strictly negative
 	 */
@@ -279,5 +281,43 @@ public class ExtendedMath {
 	 */
 	static public double log (final double value, final double base) {
 		return Math.log(value) / Math.log(base);
+	}
+
+
+	/**
+	 * Returns the sum of the given values as a collection.
+	 * @param values given collection of values
+	 * @return sum of values
+	 */
+	static public double sum (Collection<Double> values) {
+		double sum = 0.0;
+		for (double value : values) {
+			sum += value;
+		}
+		return sum;
+	}
+
+
+	/**
+	 * Returns the average of the given values as a collection.
+	 * @param values given collection of values
+	 * @return average of values
+	 */
+	static public double average (Collection<Double> values) {
+		return sum(values) / values.size();
+	}
+
+
+	/**
+	 * Returns the product of the given values as a collection.
+	 * @param values given collection of values
+	 * @return product of values
+	 */
+	static public double product (Collection<Double> values) {
+		double product = 1.0;
+		for (final double value : values) {
+			product *= value;
+		}
+		return product;
 	}
 }
