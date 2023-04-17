@@ -28,7 +28,7 @@ public class Statictics1App {
 		controller.performWelcome();
 
 		while (true) {
-			System.out.print("> ");
+			System.out.print("[Stat]> ");
 			final String consoleLine = consoleReader.readLine().trim();
 
 			final int delimiterPosition = consoleLine.indexOf(' ');

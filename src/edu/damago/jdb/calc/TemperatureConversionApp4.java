@@ -27,9 +27,9 @@ public class TemperatureConversionApp4 {
 		final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
 		controller.performWelcome();
-		
+
 		while (true) {
-			System.out.print("> ");
+			System.out.print("[Temp]> ");
 			final String consoleLine = consoleReader.readLine().trim();
 
 			final int delimiterPosition = consoleLine.indexOf(' ');
@@ -47,11 +47,9 @@ public class TemperatureConversionApp4 {
 						break;
 					case "convert":
 					case "ct":
-						System.out.println(parameterization.length());
-						if (parameterization.length() < 6)
-							controller.performMultiConvertCommand(parameterization);
-						else 
-							controller.performSingelConvertCommand(parameterization);
+						//System.out.println(parameterization.length());
+						if (parameterization.length() < 6) controller.performMultiConvertCommand(parameterization);
+						else controller.performSingelConvertCommand(parameterization);
 						break;
 					case "convertall":
 					case "cta":

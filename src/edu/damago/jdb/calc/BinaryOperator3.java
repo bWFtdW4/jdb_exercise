@@ -128,7 +128,7 @@ public abstract class BinaryOperator3 extends Object {
 	}
 
 
-
+	
 	static private class ExponentOperator extends BinaryOperator3 {
 		public ExponentOperator (String symbol) throws NullPointerException {
 			super(symbol);

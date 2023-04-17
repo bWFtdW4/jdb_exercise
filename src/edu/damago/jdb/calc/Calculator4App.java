@@ -27,7 +27,7 @@ public class Calculator4App {
 		controller.performWelcome();
 
 		while (true) {
-			System.out.print("> ");
+			System.out.print("[Calc]> ");
 			final String consoleLine = consoleReader.readLine().trim();
 
 			final int delimiterPosition = consoleLine.indexOf(' ');

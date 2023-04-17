@@ -47,8 +47,9 @@ public class Statictics1Controller {
 
 	/**
 	 * performs the sum command
-	 * @param parameterization
-	 * @throws NullPointerException
+	 * uses sumOf() method
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
 	 */
 	public void performSumCommand (final String parameterization) throws NullPointerException {
 		final String[] arguments = parameterization.split("\\s+");
@@ -57,7 +58,7 @@ public class Statictics1Controller {
 		for (final String argument : arguments) {
 			try {
 				if (!argument.isEmpty()) values.add(Double.parseDouble(argument));
-			}catch(final NumberFormatException e) {
+			} catch (final NumberFormatException e) {
 				values.add(Double.NaN);
 			}
 		}
@@ -69,8 +70,9 @@ public class Statictics1Controller {
 
 	/**
 	 * performs the average command
-	 * @param parameterization
-	 * @throws NullPointerException
+	 * uses sumOf() method
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
 	 */
 	public void performAverageCommand (final String parameterization) throws NullPointerException {
 		final String[] arguments = parameterization.split("\\s+");
@@ -79,7 +81,7 @@ public class Statictics1Controller {
 		for (final String argument : arguments) {
 			try {
 				if (!argument.isEmpty()) values.add(Double.parseDouble(argument));
-			}catch(final NumberFormatException e) {
+			} catch (final NumberFormatException e) {
 				values.add(Double.NaN);
 			}
 		}
@@ -91,8 +93,8 @@ public class Statictics1Controller {
 
 	/**
 	 * performs the product command
-	 * @param parameterization
-	 * @throws NullPointerException
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
 	 */
 	public void performProductCommand (final String parameterization) throws NullPointerException {
 		final String[] arguments = parameterization.split("\\s+");
@@ -101,7 +103,7 @@ public class Statictics1Controller {
 		for (final String argument : arguments) {
 			try {
 				if (!argument.isEmpty()) values.add(Double.parseDouble(argument));
-			}catch(final NumberFormatException e) {
+			} catch (final NumberFormatException e) {
 				values.add(Double.NaN);
 			}
 		}
@@ -116,6 +118,7 @@ public class Statictics1Controller {
 
 
 	/**
+	 * sums the given values
 	 * @param values that are given to the method
 	 * @return the result of sum of values
 	 */
