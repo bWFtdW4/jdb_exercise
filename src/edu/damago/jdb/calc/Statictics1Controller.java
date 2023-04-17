@@ -45,12 +45,21 @@ public class Statictics1Controller {
 	}
 
 
+	/**
+	 * performs the sum command
+	 * @param parameterization
+	 * @throws NullPointerException
+	 */
 	public void performSumCommand (final String parameterization) throws NullPointerException {
 		final String[] arguments = parameterization.split("\\s+");
 
 		final List<Double> values = new ArrayList<>();
 		for (final String argument : arguments) {
-			if (!argument.isEmpty()) values.add(Double.parseDouble(argument));
+			try {
+				if (!argument.isEmpty()) values.add(Double.parseDouble(argument));
+			}catch(final NumberFormatException e) {
+				values.add(Double.NaN);
+			}
 		}
 
 		double sum = sumOf(values);
@@ -58,12 +67,21 @@ public class Statictics1Controller {
 	}
 
 
+	/**
+	 * performs the average command
+	 * @param parameterization
+	 * @throws NullPointerException
+	 */
 	public void performAverageCommand (final String parameterization) throws NullPointerException {
 		final String[] arguments = parameterization.split("\\s+");
 
 		final List<Double> values = new ArrayList<>();
 		for (final String argument : arguments) {
-			if (!argument.isEmpty()) values.add(Double.parseDouble(argument));
+			try {
+				if (!argument.isEmpty()) values.add(Double.parseDouble(argument));
+			}catch(final NumberFormatException e) {
+				values.add(Double.NaN);
+			}
 		}
 
 		double average = sumOf(values) / values.size();
@@ -71,12 +89,21 @@ public class Statictics1Controller {
 	}
 
 
+	/**
+	 * performs the product command
+	 * @param parameterization
+	 * @throws NullPointerException
+	 */
 	public void performProductCommand (final String parameterization) throws NullPointerException {
 		final String[] arguments = parameterization.split("\\s+");
 
 		final List<Double> values = new ArrayList<>();
 		for (final String argument : arguments) {
-			if (!argument.isEmpty()) values.add(Double.parseDouble(argument));
+			try {
+				if (!argument.isEmpty()) values.add(Double.parseDouble(argument));
+			}catch(final NumberFormatException e) {
+				values.add(Double.NaN);
+			}
 		}
 
 		double product = 1.0;
@@ -88,6 +115,10 @@ public class Statictics1Controller {
 	}
 
 
+	/**
+	 * @param values that are given to the method
+	 * @return the result of sum of values
+	 */
 	double sumOf (Collection<Double> values) {
 		double sum = 0.0;
 		for (double value : values) {
