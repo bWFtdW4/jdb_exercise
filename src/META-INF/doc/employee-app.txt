@@ -1,0 +1,37 @@
+employee-app
+==============
+- Package: edu.damago.jdb.employee
+- Klassen: Employee1App & Employee1Controller
+ 
+
+Bedienung der employee-app
+============================
+
+> help
+Available commands:
+- quit: terminates this program
+- help: displays this help
+- display-employees: displays the registered employees as JSON text representations
+- add-employee <json>: adds an employee created from the given JSON text representation
+- remove-employee <id>: removes the employee with the given ID
+> display-employees
+ok.
+> add-employee { 'id': 1 }
+ok.
+> add-employee { 'id': 2, 'email': 'a@z.de'}
+ok.
+> add-employee { 'id': 3, 'email': 'b@z.de', 'forename': 'Boris', 'surname': 'Balao', 'phones': ['0174/445566', '0178/115599']}
+ok.
+> display-employees
+{ 'id': 1 }
+{ 'id': 2, 'email': 'a@z.de'}
+{ 'id': 3, 'email': 'b@z.de', 'forename': 'Boris', 'surname': 'Balao', 'phones': ['0174/445566', '0178/115599']}
+ok
+> remove-employee 1
+ok.
+> display-employees
+{ 'id': 2, 'email': 'a@z.de'}
+{ 'id': 3, 'email': 'b@z.de', 'forename': 'Boris', 'surname': 'Balao', 'phones': ['0174/445566', '0178/115599']}
+ok.
+> quit
+Bye Bye!

@@ -1,0 +1,3 @@
+",,,,"
+"Torstraße 16,Berlin,,,"
+"Bernburgerstraße 42,Berlin,Germany,multi-storey,500"

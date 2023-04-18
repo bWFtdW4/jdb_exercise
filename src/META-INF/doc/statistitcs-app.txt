@@ -1,0 +1,30 @@
+statistics-app
+==============
+- Package: edu.damago.jdb.calc
+- Klassen: Statistics1App & Statistics1Controller
+ 
+
+Bedienung der statistics-app
+============================
+
+> help
+Available commands:
+- quit: terminates this program
+- help: displays this help
+- sum <values>: displays the sum of the given values
+- average <values>: displays the average of the given values
+- mutiply <values>: displays the product of the given values
+> sum 2 4 6 8
+The sum of [2.0, 4.0, 6.0, 8.0] is 20.0.
+> multiply 2 4 6 8
+The product of [2.0, 4.0, 6.0, 8.0] is 384.0.
+> average 2 4 6 8
+The average of [2.0, 4.0, 6.0, 8.0] is 5.0.
+> sum
+The sum of [] is 0.0.
+> multiply
+The product of [] is 1.0.
+> average
+The average of [] is NaN.
+> quit
+Bye Bye!
