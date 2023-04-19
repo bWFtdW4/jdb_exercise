@@ -1,4 +1,4 @@
-package gptFun;
+package learning;
 
 import javax.swing.JFrame;
 

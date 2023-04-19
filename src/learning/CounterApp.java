@@ -1,4 +1,4 @@
-package edu.damago.jdb.company;
+package learning;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,12 +8,12 @@ import java.io.InputStreamReader;
 /**
  * Facade for the company application.
  */
-public class CompanyApp {
+public class CounterApp {
 
 	/**
 	 * Prevents external instantiation.
 	 */
-	private CompanyApp () {}
+	private CounterApp () {}
 
 
 	/**
@@ -21,7 +21,7 @@ public class CompanyApp {
 	 * @param args the runtime arguments
 	 */
 	static public void main (final String[] args) throws IOException {
-		final CompanyController controller = new CompanyController();
+		final CounterController controller = new CounterController();
 		final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
 		controller.performWelcome();
@@ -41,36 +41,34 @@ public class CompanyApp {
 						break;
 					case "quit":
 					case "exit":
-						controller.performQuitCommand(parameterization);
+						controller.performExit();
 						break;
-					case "display-employees":
+					case "display-inventory":
 					case "display":
 					case "show":
-						controller.performDisplayEmployeesCommand(parameterization);
+						controller.performDisplayInventory(parameterization);
 						break;
-					case "use":
-					case "rename":
-						controller.performUpdate(parameterization);
-						break;
-					case "rename2":
-						controller.performUpdate2(parameterization);
+					case "sell":
+					case "sell-item":
+						controller.performSellProduct(parameterization);
 						break;
 					case "add":
 						controller.performAddTestData(parameterization);
-					case "add-employee":
-						controller.performAddEmployeeCommand(parameterization);
 						break;
-					case "remove-employee":
+					case "add-item":
+						controller.performAddItem(parameterization);
+						break;
+					case "remove-item":
 					case "del":
-						controller.performRemoveEmployeeCommand(parameterization);
+						controller.performRemoveProduct(parameterization);
 						break;
-					case "load-employees":
+					case "load-inventory":
 					case "load":
-						controller.performLoadEmployeesCommand(parameterization);
+						controller.performLoadInventory(parameterization);
 						break;
-					case "save-employees":
+					case "save-inventory":
 					case "save":
-						controller.performSaveEmployeesCommand(parameterization);
+						controller.performSaveInventory(parameterization);
 						break;
 				}
 			} catch (final Exception e) {

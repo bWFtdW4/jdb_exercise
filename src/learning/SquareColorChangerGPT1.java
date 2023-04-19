@@ -1,4 +1,4 @@
-package gptFun;import java.awt.Color;
+package learning;import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 

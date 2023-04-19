@@ -1,4 +1,4 @@
-package gptFun;
+package learning;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
