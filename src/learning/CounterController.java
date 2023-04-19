@@ -158,7 +158,7 @@ public class CounterController {
 
 		if (parameterization.length() < 1) throw new IllegalArgumentException("please give file path!");
 		final Path sourcePath = Paths.get(parameterization);
-		System.out.println("Loading file: = " + sourcePath);
+		System.out.println("Loading file: " + sourcePath);
 
 		final List<String> fileLines = Files.readAllLines(sourcePath, StandardCharsets.UTF_8);
 		this.inventory.clear();
