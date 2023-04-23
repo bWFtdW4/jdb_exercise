@@ -1,4 +1,4 @@
-package edu.damago.jdb.calc;
+package learning;
 // Java program to Convert a List to an Array
 // Using get() method in a loop
 
