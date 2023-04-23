@@ -18,5 +18,6 @@ public class BinaryOperators {
 		POOL.put("/", (l, r) -> l / r);
 		POOL.put("%", (l, r) -> l % r);
 		POOL.put("**", (l, r) -> Math.pow(l, r));
+		POOL.put("//", (l, r) -> ExtendedMath.root(l, r));
 	}
 }
