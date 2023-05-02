@@ -177,19 +177,25 @@ public class CompanyController2 {
 	 */
 	public void performLoadEmployeesCommand (final String parameterization) throws NullPointerException, IOException {
 		//Path sourcePath = Paths.get("C:\\Java\\Testdata\\testfile1.txt");
-
-		this.employees.clear();
+		
 
 		if (parameterization.length() < 1) throw new IllegalArgumentException("please give file path!");
 		final Path sourcePath = Paths.get(parameterization);
 		System.out.println("Loading file: = " + sourcePath);
 
 		final List<String> fileLines = Files.readAllLines(sourcePath, StandardCharsets.UTF_8);
-		for (final String fileLine : fileLines) {
-			System.out.println(fileLine);
+		this.employees.clear();
+		
+		for (final String json : fileLines) {
+			final Map<String,Object> employee = JSON.parse(json);
+			if (employee.containsKey("id")) {
+				this.employees.add(employee);
+				System.out.println("added.."+ employee.get("id"));
+			}else {
+				System.err.println("warning: skipped JSON line for lack of id attribute!");
 		}
 	}
-
+	}
 
 	/**
 	 * Performs the save-employees command.
