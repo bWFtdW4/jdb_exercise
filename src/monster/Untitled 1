@@ -1,0 +1,261 @@
+package monster;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import edu.damago.jdb.tool.JSON;
+
+
+
+public class Temp {
+
+	
+	/**
+	 * adds test data
+	 */
+	public void performAddTestData (final String parameterization) throws NullPointerException {
+		
+		System.out.println("TEST DATA ADDED not found");
+	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * Performs the display-employees command.
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 */
+	public void performDisplayMonsterListCommand (final String parameterization) throws NullPointerException {
+
+		if (monsterList.isEmpty()) {
+			System.out.println("No monster!");
+		} else {
+			if (parameterization.equals("")) {
+				for (Map<String,Object> monster : this.monsterList) {
+					System.out.println("Monster: " + JSON.stringify(monster));
+				}
+			} else {
+				for (Map<String,Object> monster : this.monsterList) {
+					double id = Double.parseDouble(parameterization);
+					if ((double) monster.get("id") == id) {
+						System.out.println("Monster: " + JSON.stringify(monster));
+					}
+				}
+			}
+		}
+	}
+	
+	
+	/**
+	 * Performs the help command.
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 */
+	public void performHelpCommand (final String parameterization) throws NullPointerException {
+		System.out.println("Available commands:");
+		System.out.println("- quit: terminates this program");
+		System.out.println("- help: displays this help");
+		System.out.println("- display: displays the registered [element] as JSON text representations");
+		System.out.println("- add <json>: adds an [element] created from the given JSON text representation");
+		System.out.println("- remove <id>: removes the [element] with the given ID");
+		System.out.println("- update <json>: updates an [element] using the given JSON text representation");
+		System.out.println("- save <json-file-path>: Replaces the content of the given file with JSON generated from all [element]");
+		System.out.println("- load <json-file-path>: Replaces all [element] by parsing the given JSON file content");
+	}
+	
+	/**
+	 * Performs the add command.
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 * @throws ClassCastException if the given JSON parameterization does not represent a map, or does not contain an id
+	 *         property
+	 */
+	public void performAdd1Command (final String parameterization) throws NullPointerException, ClassCastException {
+		final Map<String,Object> monster = JSON.parse(parameterization);
+		if (!monster.containsKey("id")) throw new IllegalArgumentException("Employee JSON must contain an ID property!");
+
+		this.monsterList.add(monster);
+
+		System.out.println("added...");
+	}
+
+
+	/**
+	 * Performs the remove command and removes singel
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 */
+	public void performRemoveSingelCommand (final String parameterization) throws NullPointerException {
+		final double id = Double.parseDouble(parameterization);
+
+		for (final Map<String,Object> monster : this.monsterList) {
+			if (monster.get("id").equals(id)) {
+				this.monsterList.remove(monster);
+				System.out.println("removed...");
+				break;
+			}
+		}
+	}
+
+
+	/**
+	 * Performs the remove command and removes selected
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 */
+	public void performRemoveSelectedCommand (final String parameterization) throws NullPointerException {
+		final double id = Double.parseDouble(parameterization);
+
+		final List<Map<String,Object>> monsterSelected = new ArrayList<>();
+		for (final Map<String,Object> monster : this.monsterList) {
+			// alternative comparison: employee.get("id").equals(id)
+			if ((Double) monster.get("id") == id) monsterSelected.add(monster);
+		}
+		this.monsterList.removeAll(monsterSelected);
+
+		// alternative C: remove using functional programming (outlook)
+		// this.employees.removeIf(employee -> employee.get("id").equals(id));
+
+		System.out.println("removed...");
+	}
+
+
+	/**
+	 * Performs the remove command
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 */
+	public void performRemoveThisCommand (final String parameterization) throws NullPointerException {
+		final double id = Double.parseDouble(parameterization);
+
+		this.monsterList.removeIf(monster -> monster.get("id").equals(id));
+		System.out.println("removed...");
+	}
+
+
+	/**
+	 * Performs the update command.
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 */
+	public void performUpdateCommand (final String parameterization) throws NullPointerException {
+		final Map<String,Object> monsterSelected = JSON.parse(parameterization);
+		if (!monsterSelected.containsKey("id")) throw new IllegalArgumentException("Please give ID!");
+		final double id = (Double) monsterSelected.get("id");
+
+		boolean success = false;
+		for (int index = 0; index < this.monsterList.size(); ++index) {
+			final Map<String,Object> monster = this.monsterList.get(index);
+
+			// alternative comparison: (Double) employee.get("id") == id
+			if (monster.get("id").equals(id)) {
+				this.monsterList.set(index, monsterSelected);
+				success = true;
+			}
+		}
+
+		System.out.println(success ? "okay updated..." : "cannot find...");
+	}
+	
+	/**
+	 * Performs the multi save command.
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 * @throws IOException if there is an I/O related problem
+	 */
+	public void performSaveMultiCommand (final String parameterization) throws NullPointerException, IOException {
+		// single-line alternative:
+		// final String json = JSON.stringify(this.employees);
+
+		// multi-line alternative:
+		final List<String> lines = new ArrayList<>();
+		for (final Map<String,Object> monster : this.monsterList)
+			lines.add(JSON.stringify(monster));
+
+		final Path filePath = Paths.get(parameterization);
+		Files.write(filePath, lines, StandardCharsets.UTF_8);
+
+		System.out.println("saved...");
+	}
+	
+	
+	/**
+	 * Performs the single save command.
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 * @throws IOException if there is an I/O related problem
+	 */
+	public void performSaveSingelCommand (final String parameterization) throws NullPointerException, IOException {
+		final Path filePath = Paths.get(parameterization);
+
+		final String line = JSON.stringify(this.monsterList);
+		Files.writeString(filePath, line, StandardCharsets.UTF_8);
+
+		System.out.println("saved...");
+	}
+	
+	
+	
+	
+	/**
+	 * Performs the multi line load command.
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 * @throws IOException if there is an I/O related problem
+	 */
+	public void performLoadMultiCommand (final String parameterization) throws NullPointerException, IOException {
+		
+		//String parameterization2 = "C:\\\\Java\\\\M\\\\data\\\\monsteList2Full";
+		//System.out.println("loading... C:\\Java\\M\\data\\monsteList2Full");
+		//final Path filePath = Paths.get(parameterization2);
+		
+		final Path filePath = Paths.get(parameterization);
+
+		final List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
+		this.monsterList.clear();
+		System.out.println("loading..." + filePath);
+		for (final String line : lines) {
+			final Map<String,Object> monster = JSON.parse(line);
+			if (monster.containsKey("id")) this.monsterList.add(monster);
+			else System.err.println("warning: skipped JSON line for lack of id attribute!");
+		}
+
+		System.out.println("loaded...");
+	}
+	
+	
+	
+	
+	/**
+	 * Performs the singel line load command.
+	 * @param parameterization the command parameterization, empty for none
+	 * @throws NullPointerException if the given parameterization is null
+	 * @throws IOException if there is an I/O related problem
+	 */
+	public void performLoadSingelCommand (final String parameterization) throws NullPointerException, IOException {
+		final Path filePath = Paths.get(parameterization);
+
+		final String line = Files.readString(filePath, StandardCharsets.UTF_8);
+		final List<Map<String,Object>> monster = JSON.parse(line);
+		this.monsterList.clear();
+		this.monsterList.addAll(monster);
+
+		System.out.println("added...");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}
