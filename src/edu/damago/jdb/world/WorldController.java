@@ -212,6 +212,7 @@ public class WorldController {
 	 * //SELECT country.globalName, city.countryCode, city.name, city.district, city.population
 	 */
 	public void performQueryCitiesCommand (final String parameterization) throws NullPointerException, SQLException {
+		
 		final Map<String,Object> filterCriteria = JSON.parse(parameterization);
 		try (PreparedStatement jdbcStatement = this.jdbcConnection.prepareStatement(QUERY_CITIES)) {
 			int index = 0;
